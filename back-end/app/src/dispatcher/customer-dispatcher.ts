@@ -8,6 +8,9 @@ import cors=require("cors");
 const customerDispatcher = express.Router();
 
 
+customerDispatcher.use(cors());
+
+
 /*
 customerDispatcher.get("", (req, res) => {
     res.send("GET Request");

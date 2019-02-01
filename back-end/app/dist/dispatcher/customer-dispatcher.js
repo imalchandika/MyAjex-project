@@ -5,6 +5,7 @@ var customer_bo_1 = require("../business/customer-bo");
 var cors = require("cors");
 // This will return a new instance of a router object that can be used to handle routing
 var customerDispatcher = express.Router();
+customerDispatcher.use(cors());
 /*
 customerDispatcher.get("", (req, res) => {
     res.send("GET Request");
