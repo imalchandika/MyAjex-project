@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <title>AdminLTE 3 MY PROJECT</title>
+
+  <!-- Font Awesome Icons -->
+  <!-- <link rel="stylesheet" href="css/font-awesome.min.css"> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+    crossorigin="anonymous">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="css/adminlte.min.css">
+  <link rel="stylesheet" href="css/customer.css">
+  <!-- Google Font: Source Sans Pro -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto+Slab" rel="stylesheet"> -->
+  
+  <link href="https://fonts.googleapis.com/css?family=Anton|Roboto+Condensed|Roboto+Slab" rel="stylesheet">
+  
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom" style="background-color:#3c8dbc!important;padding-bottom: 3px">
+    <!-- Left navbar links -->
+    
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+      </li>
+    </ul>
+
+    <div><h2>Customer Form</h2></div>
+    
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index.html" class="brand-link" style="background-color:#367fa9">
+      <img src="img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+           style="opacity: .8">
+      <span class="brand-text font-weight-light">Dash Board </span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item">
+            <a href="customer.html" class="nav-link">
+                    <i class="fas fa-user-alt"></i>
+              <p>
+             Customer
+                
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item">
+            <a href="item.html" class="nav-link">
+                <i class="fas fa-gifts"></i>
+              <p>
+                Items
+               
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="fas fa-shopping-cart"></i>
+              <p>
+                Orders
+               
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="fas fa-calculator"></i>
+              <p>
+                PlaceOrder
+               
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <div class="content-wrapper" style="margin-top:30px;margin-right:20px;">
+   <!-- main main -->
+
+   <div class="content-header">
+      <div class="col-12 col-sm-6 col-md-3">
+          <div class="info-box mb-3" style="position:relative;left:800px;" id="newCustomer">
+            <span class="info-box-icon bg-warning elevation-1"><i class="fa fa-users"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">New Customers</span>
+              <span class="info-box-number">2,000</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+
+        
+    </div>
+
+    <div class="container" id="inputCustomer">
+        <div style="position:relative;padding-top: 10px;padding-bottom: 10px;padding-left:5px;padding-right:5px;margin-bottom: 10px;width: 75%">
+            <input type="text" id="customerId" class="form-control" placeholder="ID">
+        </div>
+        <div  style="position:relative;padding-top: 10px;padding-bottom: 10px;padding-left:5px;padding-right:5px;margin-bottom: 10px;width: 75%">
+            <input type="text" id="customerName" class="form-control" placeholder="NAME">
+        </div>
+        <div  style="position:relative;padding-top: 10px;padding-bottom: 10px;padding-left:5px;padding-right:5px;margin-bottom: 10px;width: 75%">
+             <input type="text" id="customerAddress" class="form-control" placeholder="ADDRESS">
+        </div>
+
+        <div style="text-align: right;width:75%">
+           <div>
+            <button type="button" class="btn btn-success" id="btnSave">Save</button>
+            <button type="button" class="btn btn-danger" id="btnDelete">Delete</button>
+           </div>
+        </div>
+    </div>
+    
+
+   <div class="container" style="padding-top: 15px;padding-bottom: 15px;margin-top: 30px">            
+        <table class="table" id="tblCustomer">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">NAME</th>
+                    <th scope="col">ADDRESS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td style="width:60px;padding:0px"><div class="icon-delete"></div></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                    <td style="width:60px;padding:0px"><div class="icon-delete"></div></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                    <td style="width:60px;padding:0px"><div class="icon-delete"></div></td>
+                  </tr>
+                </tbody>
+              </table>
+    </div>
+    
+
+  </div>
+  
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+    <div class="p-3">
+      <h5>Title</h5>
+      <p>Sidebar content</p>
+    </div>
+  </aside>
+  <!-- /.control-sidebar -->
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <!-- To the right -->
+    <div class="float-right d-none d-sm-inline">
+      <!-- Anything you want -->
+    </div>
+    <!-- Default to the left -->
+    <strong>Copyright &copy; 2018-2019 <a href="https://adminlte.io">IJSE.dep</a>.</strong> All rights reserved.
+  </footer>
+
+</div>
+<!-- ./wrapper -->
+
+
+
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+<script src="js/jquery-3.3.1.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="js/adminlte.min.js"></script>
+<script src="js/customer.js"></script>
+<script>
+
+</script>
+</body>
+</html>
