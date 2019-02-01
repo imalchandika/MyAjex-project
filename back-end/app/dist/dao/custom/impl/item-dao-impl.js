@@ -71,6 +71,19 @@ var ItemDAOImpl = /** @class */ (function () {
             });
         });
     };
+    ItemDAOImpl.prototype.count = function () {
+        var _this = this;
+        return new Promise(function (resolve, rejects) {
+            _this.connection.query("SELECT COUNT(*) as  count FROM item", function (err, results) {
+                if (err) {
+                    rejects(err);
+                }
+                else {
+                    resolve(results[0].count);
+                }
+            });
+        });
+    };
     return ItemDAOImpl;
 }());
 exports.ItemDAOImpl = ItemDAOImpl;

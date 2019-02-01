@@ -1,6 +1,8 @@
 import express = require("express");
 import {ItemBO} from "../business/item-bo";
-import {CustomerBO} from "../business/customer-bo";
+
+import cors=require("cors");
+
 
 
 // This will return a new instance of a router object that can be used to handle routing
@@ -25,7 +27,19 @@ itemDispatcher.route("")
         const promise = new ItemBO().saveItem(req.body);
         promise.then(status => res.status(201).json(status))
             .catch(err=>res.status(500).send(err));
+
+    }).head(cors({exposedHeaders:['X-Count']}),((req,res)=>{
+
+
+    const promise=new ItemBO().countItem();
+    promise.then(count=>{
+        res.append("X-Count",count+"");
+        res.sendStatus(200);
+    }).catch(error=>{
+        res.sendStatus(500);
     });
+
+}));
 
 itemDispatcher.route("/:code")
     .get((req, res) => {

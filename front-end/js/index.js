@@ -26,6 +26,30 @@ $(document).ready(function () {
         console.log(jxhr.responseText);
     });
 
+    var ajaxConfig={
+        method: "HEAD",
+        url :"http://localhost:3000/api/v1/items",
+        async:true,
+        // contentType:"application/x-www-form-urlencoded"
+        // data :$("form").serialize()
+
+    };
+
+    $.ajax(ajaxConfig).done(function (ITEM,statusText,jxhr) {
+        console.log("Success");
+        // console.log(ITEM);
+        console.log(jxhr.getResponseHeader("X-Count"));
+        $("#itemCount").text(jxhr.getResponseHeader("X-Count"));
+
+        // console.log(jxhr);
+
+
+    }).fail(function (jxhr,statusText,error) {
+        console.log("fails");
+        console.log(statusText);
+        console.log(error);
+        console.log(jxhr.responseText);
+    });
 
 
 });

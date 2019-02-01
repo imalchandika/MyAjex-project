@@ -106,6 +106,24 @@ var ItemBO = /** @class */ (function () {
             });
         });
     };
+    ItemBO.prototype.countItem = function () {
+        return new Promise(function (resolve, reject) {
+            db_pool_1.pool.getConnection(function (err, connect) {
+                if (err) {
+                    reject(err);
+                }
+                else {
+                    var itemDAO = dao_factory_1.getDAO(dao_factory_1.DAOTypes.ITEM, connect);
+                    var promise = itemDAO.count();
+                    promise.then(function (count) {
+                        resolve(count);
+                    }).catch(function (err) {
+                        reject(err);
+                    });
+                }
+            });
+        });
+    };
     return ItemBO;
 }());
 exports.ItemBO = ItemBO;

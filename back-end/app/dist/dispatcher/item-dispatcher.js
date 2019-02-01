@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var express = require("express");
 var item_bo_1 = require("../business/item-bo");
+var cors = require("cors");
 // This will return a new instance of a router object that can be used to handle routing
 var itemDispatcher = express.Router();
 itemDispatcher.route("")
@@ -21,7 +22,15 @@ itemDispatcher.route("")
     var promise = new item_bo_1.ItemBO().saveItem(req.body);
     promise.then(function (status) { return res.status(201).json(status); })
         .catch(function (err) { return res.status(500).send(err); });
-});
+}).head(cors({ exposedHeaders: ['X-Count'] }), (function (req, res) {
+    var promise = new item_bo_1.ItemBO().countItem();
+    promise.then(function (count) {
+        res.append("X-Count", count + "");
+        res.sendStatus(200);
+    }).catch(function (error) {
+        res.sendStatus(500);
+    });
+}));
 itemDispatcher.route("/:code")
     .get(function (req, res) {
     var promise = new item_bo_1.ItemBO().findItem(req.params.code);

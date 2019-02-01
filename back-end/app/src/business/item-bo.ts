@@ -8,6 +8,7 @@ import Promise=require("promise");
 
 
 
+
 export class ItemBO {
     findAllItems(): Promise<Array<ItemDTO>>{
 
@@ -149,6 +150,24 @@ export class ItemBO {
 
 
         });
+    }
+    countItem():Promise<number>{
+        return new Promise((resolve,reject)=>{
+            pool.getConnection((err,connect)=>{
+                if(err){
+                    reject(err);
+                }else{
+                    const itemDAO =<ItemDAO> getDAO(DAOTypes.ITEM,connect )
+                    const promise=itemDAO.count();
+
+                    promise.then(count=>{
+                        resolve(count);
+                    }).catch(err=>{
+                        reject(err);
+                    });
+                }
+            })
+        })
     }
 
 

@@ -92,4 +92,16 @@ import {PoolConnection} from "mysql";
         });
     }
 
+     count(): Promise<number> {
+         return new Promise((resolve,rejects)=>{
+             this.connection.query("SELECT COUNT(*) as  count FROM item",(err,results)=>{
+                 if(err){
+                     rejects(err);
+                 }else{
+                     resolve(results[0].count);
+                 }
+             })
+         });
+     }
+
 }
