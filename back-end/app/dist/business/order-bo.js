@@ -3,6 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var Promise = require("promise");
 var db_pool_1 = require("../db/db-pool");
 var dao_factory_1 = require("../dao/dao-factory");
+var order_1 = require("../entity/order");
+var orderdetails_1 = require("../entity/orderdetails");
 var OrderBO = /** @class */ (function () {
     function OrderBO() {
     }
@@ -46,7 +48,7 @@ var OrderBO = /** @class */ (function () {
             });
         });
     };
-    OrderBO.prototype.saveOrder = function (order) {
+    OrderBO.prototype.saveOrder = function (order1) {
         return new Promise(function (resolve, reject) {
             db_pool_1.pool.getConnection(function (err, connection) {
                 if (err) {
@@ -54,9 +56,21 @@ var OrderBO = /** @class */ (function () {
                 }
                 else {
                     var orderDAO = dao_factory_1.getDAO(dao_factory_1.DAOTypes.ORDER, connection);
-                    var promise = orderDAO.save(order);
+                    var orderdetailDAO_1 = dao_factory_1.getDAO(dao_factory_1.DAOTypes.ORDERDETAIL, connection);
+                    var promise = orderDAO.save(new order_1.Order(order1.id, order1.date, order1.customerId));
                     promise.then(function (result) {
-                        resolve(result);
+                        for (var _i = 0, _a = order1.orderDetails; _i < _a.length; _i++) {
+                            var orderDetail = _a[_i];
+                            var promise_1 = orderdetailDAO_1.save(new orderdetails_1.OrderDetail(orderDetail.orderId, orderDetail.itemCode, orderDetail.qty, orderDetail.unitPrice));
+                            promise_1.then(function (result) {
+                                resolve(result);
+                                db_pool_1.pool.releaseConnection(connection);
+                            }).catch(function (error) {
+                                reject(error);
+                                db_pool_1.pool.releaseConnection(connection);
+                            });
+                        }
+                        // resolve(result);
                         db_pool_1.pool.releaseConnection(connection);
                     }).catch(function (error) {
                         reject(error);

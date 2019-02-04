@@ -1,9 +1,15 @@
 import Promise=require("promise");
-import {OrderDTO} from "../dto/order-dto";
+
 import {pool} from "../db/db-pool";
 import {DAOTypes, getDAO} from "../dao/dao-factory";
 import {OrderDAO} from "../dao/custom/order-dao";
-import {ItemDAO} from "../dao/custom/item-dao";
+
+
+import {Order1DTO} from "../dto/order1-dto";
+import {Order} from "../entity/order";
+import {OrderDetailDAO} from "../dao/custom/orderdetail-dao";
+import {OrderDetail} from "../entity/orderdetails";
+import {OrderDTO} from "../dto/order-dto";
 
 
 
@@ -63,7 +69,7 @@ export class OrderBO{
         });
     }
 
-    saveOrder(order: OrderDTO): Promise<boolean>{
+    saveOrder(order1: Order1DTO): Promise<boolean>{
         return new Promise((resolve, reject) => {
 
             pool.getConnection((err, connection) => {
@@ -73,11 +79,31 @@ export class OrderBO{
                 }else{
 
                     const orderDAO = <OrderDAO> getDAO(DAOTypes.ORDER, connection);
+                    const orderdetailDAO = <OrderDetailDAO> getDAO(DAOTypes.ORDERDETAIL, connection);
 
-                    const promise = orderDAO.save(order);
+                    const promise = orderDAO.save(new Order(order1.id,order1.date,order1.customerId));
                     promise.then(result => {
-                        resolve(result);
+
+
+                        for (var orderDetail of order1.orderDetails) {
+
+                            const promise = orderdetailDAO.save(new OrderDetail(orderDetail.orderId,orderDetail.itemCode,orderDetail.qty,orderDetail.unitPrice));
+                            promise.then(result => {
+
+                                resolve(result);
+                                pool.releaseConnection(connection);
+
+                            }).catch(error=>{
+                                reject(error);
+                                pool.releaseConnection(connection);
+                            });
+                        }
+
+
+
+                        // resolve(result);
                         pool.releaseConnection(connection);
+
                     }).catch(error=>{
                         reject(error);
                         pool.releaseConnection(connection);

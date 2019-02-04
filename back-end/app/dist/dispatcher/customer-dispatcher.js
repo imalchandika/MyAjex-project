@@ -54,39 +54,47 @@ customerDispatcher.route("/:id")
     }).catch(function (error) {
         res.status(500).send(error);
     });
-})
-    .delete(function (req, res) {
-    var promise = new customer_bo_1.CustomerBO().deleteCustomer(req.params.id);
-    promise.then(function (status) {
-        if (status) {
-            res.status(200).send(true);
-        }
-        else {
-            res.sendStatus(404);
-        }
-    }).catch(function (error) {
-        res.status(500).send(error);
-    });
-})
-    .put(function (req, res) {
-    if (!("id" in req.body && "name" in req.body && "address" in req.body)) {
-        res.status(400).send("Invalid Request Body");
-        return;
-    }
-    if (req.body.id !== req.params.id) {
-        res.status(400).send("Mismatched Customer ID");
-        return;
-    }
-    var promise = new customer_bo_1.CustomerBO().updateCustomer(req.body);
-    promise.then(function (status) {
-        if (status) {
-            res.status(200).send(true);
-        }
-        else {
-            res.sendStatus(404);
-        }
-    }).catch(function (error) {
-        res.status(500).send(error);
-    });
 });
+// .delete((req, res) => {
+//     //
+//     //     const promise = new CustomerBO().deleteCustomer(req.params.id);
+//     //     promise.then(status=>{
+//     //
+//     //         if (status){
+//     //             res.status(200).send(true);
+//     //         }else{
+//     //             res.sendStatus(404);
+//     //         }
+//     //
+//     //     }).catch(error=>{
+//     //         res.status(500).send(error);
+//     //     });
+//     //
+//     // })
+//     // .put((req, res) => {
+//     //
+//     //     if (!("id" in req.body && "name" in req.body && "address" in req.body)){
+//     //         res.status(400).send("Invalid Request Body");
+//     //         return;
+//     //     }
+//     //
+//     //     if (req.body.id !== req.params.id){
+//     //         res.status(400).send("Mismatched Customer ID");
+//     //         return;
+//     //     }
+//     //
+//     //     const promise = new CustomerBO().updateCustomer(req.body);
+//     //     promise.then(status=>{
+//     //
+//     //         if (status){
+//     //             res.status(200).send(true);
+//     //         }else{
+//     //             res.sendStatus(404);
+//     //         }
+//     //
+//     //     }).catch(error=>{
+//     //         res.status(500).send(error);
+//     //     });
+//     //
+//     // });
 exports.default = customerDispatcher;

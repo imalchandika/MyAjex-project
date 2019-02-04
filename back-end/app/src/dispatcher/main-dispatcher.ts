@@ -3,6 +3,8 @@ import customerDispatcher from "./customer-dispatcher";
 import itemDispatcher from "./item-dispatcher";
 import cors=require("cors");
 import orderDispatcher from "./order-dispatcher";
+import orderDetailDispatcher from "./orderdetail-dispatcher";
+
 
 
 // This will return a new instance of a router object that can be used to handle routing
@@ -15,5 +17,6 @@ mainDispatcher.use(cors());
 mainDispatcher.use("/api/v1/customers",customerDispatcher);
 mainDispatcher.use("/api/v1/items",itemDispatcher);
 mainDispatcher.use("/api/v1/orders",orderDispatcher);
+mainDispatcher.use("/api/v1/orderDetails",orderDetailDispatcher);
 
 export default mainDispatcher;

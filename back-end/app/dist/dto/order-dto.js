@@ -6,7 +6,6 @@ var OrderDTO = /** @class */ (function () {
         this.date = date;
         this.customerId = customerId;
     }
-    ;
     return OrderDTO;
 }());
 exports.OrderDTO = OrderDTO;

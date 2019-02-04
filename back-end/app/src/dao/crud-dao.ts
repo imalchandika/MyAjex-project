@@ -5,7 +5,6 @@ export interface CrudDAO<T extends SuperEntity, ID> extends SuperDAO{
 
     findAll(): Promise<Array<T>>;
 
-
     find(id: ID): Promise<Array<T>>;
 
 
