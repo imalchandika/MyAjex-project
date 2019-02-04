@@ -92,61 +92,61 @@ export class CustomerBO{
         });
     }
 
-    updateCustomer(customer: CustomerDTO): Promise<boolean>{
-        return new Promise((resolve, reject) => {
+    // updateCustomer(customer: CustomerDTO): Promise<boolean>{
+    //     return new Promise((resolve, reject) => {
+    //
+    //         pool.getConnection((err, connection) => {
+    //
+    //             if (err){
+    //                 reject(err);
+    //             }else{
+    //
+    //                 const customerDAO = <CustomerDAO> getDAO(DAOTypes.CUSTOMER, connection);
+    //
+    //                 const promise = customerDAO.update(customer);
+    //                 promise.then(result => {
+    //                     resolve(result);
+    //                     pool.releaseConnection(connection);
+    //                 }).catch(error=>{
+    //                     reject(error);
+    //                     pool.releaseConnection(connection);
+    //                 });
+    //
+    //             }
+    //
+    //         });
+    //
+    //
+    //     });
+    // }
 
-            pool.getConnection((err, connection) => {
-
-                if (err){
-                    reject(err);
-                }else{
-
-                    const customerDAO = <CustomerDAO> getDAO(DAOTypes.CUSTOMER, connection);
-
-                    const promise = customerDAO.update(customer);
-                    promise.then(result => {
-                        resolve(result);
-                        pool.releaseConnection(connection);
-                    }).catch(error=>{
-                        reject(error);
-                        pool.releaseConnection(connection);
-                    });
-
-                }
-
-            });
-
-
-        });
-    }
-
-    deleteCustomer(id: string): Promise<boolean>{
-        return new Promise((resolve, reject) => {
-
-            pool.getConnection((err, connection) => {
-
-                if (err){
-                    reject(err);
-                }else{
-
-                    const customerDAO = <CustomerDAO> getDAO(DAOTypes.CUSTOMER, connection);
-
-                    const promise = customerDAO.delete(id);
-                    promise.then(result => {
-                        resolve(result);
-                        pool.releaseConnection(connection);
-                    }).catch(error=>{
-                        reject(error);
-                        pool.releaseConnection(connection);
-                    });
-
-                }
-
-            });
-
-
-        });
-    }
+    // deleteCustomer(id: string): Promise<boolean>{
+    //     return new Promise((resolve, reject) => {
+    //
+    //         pool.getConnection((err, connection) => {
+    //
+    //             if (err){
+    //                 reject(err);
+    //             }else{
+    //
+    //                 const customerDAO = <CustomerDAO> getDAO(DAOTypes.CUSTOMER, connection);
+    //
+    //                 const promise = customerDAO.delete(id);
+    //                 promise.then(result => {
+    //                     resolve(result);
+    //                     pool.releaseConnection(connection);
+    //                 }).catch(error=>{
+    //                     reject(error);
+    //                     pool.releaseConnection(connection);
+    //                 });
+    //
+    //             }
+    //
+    //         });
+    //
+    //
+    //     });
+    // }
 
     countCustomer():Promise<number>{
         return new Promise((resolve,reject)=>{

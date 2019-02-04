@@ -129,10 +129,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </div>
 
     </div>
-
+      <form>
     <div class="container" id="inputItem">
         <div style="position:relative;padding-top: 10px;padding-bottom: 10px;padding-left:5px;padding-right:5px;margin-bottom: 10px;width: 75%">
-            <input type="text" id="itemCode" class="form-control" placeholder="Item Code">
+            <input type="text" id="code" class="form-control" placeholder="Item Code">
         </div>
         <div  style="position:relative;padding-top: 10px;padding-bottom: 10px;padding-left:5px;padding-right:5px;margin-bottom: 10px;width: 75%">
             <input type="text" id="discription" class="form-control" placeholder="Description">
@@ -141,19 +141,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
              <input type="text" id="unitPrice" class="form-control" placeholder="unitPrice">
         </div>
         <div  style="position:relative;padding-top: 10px;padding-bottom: 10px;padding-left:5px;padding-right:5px;margin-bottom: 10px;width: 75%">
-                <input type="text" id="disabledTextInput" class="form-control" placeholder="QtyOnHand">
+                <input type="text" id="qtyOnHand" class="form-control" placeholder="QtyOnHand">
         </div>
         <div style="text-align: right;width:75%">
            <div>
-            <button type="button" class="btn btn-success">Save</button>
-            <button type="button" class="btn btn-danger">Delete</button>
+            <button type="button" class="btn btn-success" id="btnSave">Save</button>
+            <button type="reset" class="btn btn-danger" id="btnDelete">Reset</button>
            </div>
         </div>
     </div>
-    
+      </form>
 
-   <div class="container" style="padding-top: 15px;padding-bottom: 15px;margin-top: 30px">            
-        <table class="table">
+   <div class="container" style="padding-top: 15px;padding-bottom: 15px;margin-top: 30px" id="tblContainer">
+        <table class="table" id="tblItem">
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">#</th>
@@ -164,30 +164,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>O001</td>
-                    <td>kukulu samba</td>
-                    <td>200.0</td>
-                    <td>65</td>
-                    <td style="width:60px;padding:0px"><div class="icon-delete"></div></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>O001</td>
-                    <td>ratu kukulu</td>
-                    <td>250.0</td>
-                    <td>65</td>
-                    <td style="width:60px;padding:0px"><div class="icon-delete"></div></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>O001</td>
-                    <td>samba</td>
-                    <td>300.0r</td>
-                    <td>75</td>
-                    <td style="width:60px;padding:0px"><div class="icon-delete"></div></td>
-                  </tr>
+                  <!--<tr>-->
+                    <!--<th scope="row">1</th>-->
+                    <!--<td>O001</td>-->
+                    <!--<td>kukulu samba</td>-->
+                    <!--<td>200.0</td>-->
+                    <!--<td>65</td>-->
+                    <!--<td style="width:60px;padding:0px"><div class="icon-delete"></div></td>-->
+                  <!--</tr>-->
+                  <!--<tr>-->
+                    <!--<th scope="row">2</th>-->
+                    <!--<td>O001</td>-->
+                    <!--<td>ratu kukulu</td>-->
+                    <!--<td>250.0</td>-->
+                    <!--<td>65</td>-->
+                    <!--<td style="width:60px;padding:0px"><div class="icon-delete"></div></td>-->
+                  <!--</tr>-->
+                  <!--<tr>-->
+                    <!--<th scope="row">3</th>-->
+                    <!--<td>O001</td>-->
+                    <!--<td>samba</td>-->
+                    <!--<td>300.0r</td>-->
+                    <!--<td>75</td>-->
+                    <!--<td style="width:60px;padding:0px"><div class="icon-delete"></div></td>-->
+                  <!--</tr>-->
                 </tbody>
         </table>
     </div>
@@ -227,5 +227,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="js/adminlte.min.js"></script>
+<script src="js/item.js"></script>
 </body>
 </html>

@@ -12,8 +12,8 @@ export interface CrudDAO<T extends SuperEntity, ID> extends SuperDAO{
     save(entity: T): Promise<boolean>;
 
 
-    update(entity: T): Promise<boolean>;
-
-
-    delete(id: ID): Promise<boolean>;
+    // update(entity: T): Promise<boolean>;
+    //
+    //
+    // delete(id: ID): Promise<boolean>;
 }

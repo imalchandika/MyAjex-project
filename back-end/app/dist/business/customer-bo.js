@@ -66,46 +66,60 @@ var CustomerBO = /** @class */ (function () {
             });
         });
     };
-    CustomerBO.prototype.updateCustomer = function (customer) {
-        return new Promise(function (resolve, reject) {
-            db_pool_1.pool.getConnection(function (err, connection) {
-                if (err) {
-                    reject(err);
-                }
-                else {
-                    var customerDAO = dao_factory_1.getDAO(dao_factory_1.DAOTypes.CUSTOMER, connection);
-                    var promise = customerDAO.update(customer);
-                    promise.then(function (result) {
-                        resolve(result);
-                        db_pool_1.pool.releaseConnection(connection);
-                    }).catch(function (error) {
-                        reject(error);
-                        db_pool_1.pool.releaseConnection(connection);
-                    });
-                }
-            });
-        });
-    };
-    CustomerBO.prototype.deleteCustomer = function (id) {
-        return new Promise(function (resolve, reject) {
-            db_pool_1.pool.getConnection(function (err, connection) {
-                if (err) {
-                    reject(err);
-                }
-                else {
-                    var customerDAO = dao_factory_1.getDAO(dao_factory_1.DAOTypes.CUSTOMER, connection);
-                    var promise = customerDAO.delete(id);
-                    promise.then(function (result) {
-                        resolve(result);
-                        db_pool_1.pool.releaseConnection(connection);
-                    }).catch(function (error) {
-                        reject(error);
-                        db_pool_1.pool.releaseConnection(connection);
-                    });
-                }
-            });
-        });
-    };
+    // updateCustomer(customer: CustomerDTO): Promise<boolean>{
+    //     return new Promise((resolve, reject) => {
+    //
+    //         pool.getConnection((err, connection) => {
+    //
+    //             if (err){
+    //                 reject(err);
+    //             }else{
+    //
+    //                 const customerDAO = <CustomerDAO> getDAO(DAOTypes.CUSTOMER, connection);
+    //
+    //                 const promise = customerDAO.update(customer);
+    //                 promise.then(result => {
+    //                     resolve(result);
+    //                     pool.releaseConnection(connection);
+    //                 }).catch(error=>{
+    //                     reject(error);
+    //                     pool.releaseConnection(connection);
+    //                 });
+    //
+    //             }
+    //
+    //         });
+    //
+    //
+    //     });
+    // }
+    // deleteCustomer(id: string): Promise<boolean>{
+    //     return new Promise((resolve, reject) => {
+    //
+    //         pool.getConnection((err, connection) => {
+    //
+    //             if (err){
+    //                 reject(err);
+    //             }else{
+    //
+    //                 const customerDAO = <CustomerDAO> getDAO(DAOTypes.CUSTOMER, connection);
+    //
+    //                 const promise = customerDAO.delete(id);
+    //                 promise.then(result => {
+    //                     resolve(result);
+    //                     pool.releaseConnection(connection);
+    //                 }).catch(error=>{
+    //                     reject(error);
+    //                     pool.releaseConnection(connection);
+    //                 });
+    //
+    //             }
+    //
+    //         });
+    //
+    //
+    //     });
+    // }
     CustomerBO.prototype.countCustomer = function () {
         return new Promise(function (resolve, reject) {
             db_pool_1.pool.getConnection(function (err, connect) {

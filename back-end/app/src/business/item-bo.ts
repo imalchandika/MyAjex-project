@@ -96,61 +96,61 @@ export class ItemBO {
         });
     }
 
-    updateItem(item: ItemDTO): Promise<boolean>{
-        return new Promise((resolve, reject) => {
-
-            pool.getConnection((err, connection) => {
-
-                if (err){
-                    reject(err);
-                }else{
-
-                    const itemDAO = <ItemDAO> getDAO(DAOTypes.ITEM, connection);
-
-                    const promise = itemDAO.update(item);
-                    promise.then(result => {
-                        resolve(result);
-                        pool.releaseConnection(connection);
-                    }).catch(error=>{
-                        reject(error);
-                        pool.releaseConnection(connection);
-                    });
-
-                }
-
-            });
-
-
-        });
-    }
-
-    deleteItem(id: string): Promise<boolean>{
-        return new Promise((resolve, reject) => {
-
-            pool.getConnection((err, connection) => {
-
-                if (err){
-                    reject(err);
-                }else{
-
-                    const itemDAO = <ItemDAO> getDAO(DAOTypes.ITEM, connection);
-
-                    const promise = itemDAO.delete(id);
-                    promise.then(result => {
-                        resolve(result);
-                        pool.releaseConnection(connection);
-                    }).catch(error=>{
-                        reject(error);
-                        pool.releaseConnection(connection);
-                    });
-
-                }
-
-            });
-
-
-        });
-    }
+    // updateItem(item: ItemDTO): Promise<boolean>{
+    //     return new Promise((resolve, reject) => {
+    //
+    //         pool.getConnection((err, connection) => {
+    //
+    //             if (err){
+    //                 reject(err);
+    //             }else{
+    //
+    //                 const itemDAO = <ItemDAO> getDAO(DAOTypes.ITEM, connection);
+    //
+    //                 const promise = itemDAO.update(item);
+    //                 promise.then(result => {
+    //                     resolve(result);
+    //                     pool.releaseConnection(connection);
+    //                 }).catch(error=>{
+    //                     reject(error);
+    //                     pool.releaseConnection(connection);
+    //                 });
+    //
+    //             }
+    //
+    //         });
+    //
+    //
+    //     });
+    // }
+    //
+    // deleteItem(id: string): Promise<boolean>{
+    //     return new Promise((resolve, reject) => {
+    //
+    //         pool.getConnection((err, connection) => {
+    //
+    //             if (err){
+    //                 reject(err);
+    //             }else{
+    //
+    //                 const itemDAO = <ItemDAO> getDAO(DAOTypes.ITEM, connection);
+    //
+    //                 const promise = itemDAO.delete(id);
+    //                 promise.then(result => {
+    //                     resolve(result);
+    //                     pool.releaseConnection(connection);
+    //                 }).catch(error=>{
+    //                     reject(error);
+    //                     pool.releaseConnection(connection);
+    //                 });
+    //
+    //             }
+    //
+    //         });
+    //
+    //
+    //     });
+    // }
     countItem():Promise<number>{
         return new Promise((resolve,reject)=>{
             pool.getConnection((err,connect)=>{

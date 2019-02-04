@@ -66,46 +66,61 @@ var ItemBO = /** @class */ (function () {
             });
         });
     };
-    ItemBO.prototype.updateItem = function (item) {
-        return new Promise(function (resolve, reject) {
-            db_pool_1.pool.getConnection(function (err, connection) {
-                if (err) {
-                    reject(err);
-                }
-                else {
-                    var itemDAO = dao_factory_1.getDAO(dao_factory_1.DAOTypes.ITEM, connection);
-                    var promise = itemDAO.update(item);
-                    promise.then(function (result) {
-                        resolve(result);
-                        db_pool_1.pool.releaseConnection(connection);
-                    }).catch(function (error) {
-                        reject(error);
-                        db_pool_1.pool.releaseConnection(connection);
-                    });
-                }
-            });
-        });
-    };
-    ItemBO.prototype.deleteItem = function (id) {
-        return new Promise(function (resolve, reject) {
-            db_pool_1.pool.getConnection(function (err, connection) {
-                if (err) {
-                    reject(err);
-                }
-                else {
-                    var itemDAO = dao_factory_1.getDAO(dao_factory_1.DAOTypes.ITEM, connection);
-                    var promise = itemDAO.delete(id);
-                    promise.then(function (result) {
-                        resolve(result);
-                        db_pool_1.pool.releaseConnection(connection);
-                    }).catch(function (error) {
-                        reject(error);
-                        db_pool_1.pool.releaseConnection(connection);
-                    });
-                }
-            });
-        });
-    };
+    // updateItem(item: ItemDTO): Promise<boolean>{
+    //     return new Promise((resolve, reject) => {
+    //
+    //         pool.getConnection((err, connection) => {
+    //
+    //             if (err){
+    //                 reject(err);
+    //             }else{
+    //
+    //                 const itemDAO = <ItemDAO> getDAO(DAOTypes.ITEM, connection);
+    //
+    //                 const promise = itemDAO.update(item);
+    //                 promise.then(result => {
+    //                     resolve(result);
+    //                     pool.releaseConnection(connection);
+    //                 }).catch(error=>{
+    //                     reject(error);
+    //                     pool.releaseConnection(connection);
+    //                 });
+    //
+    //             }
+    //
+    //         });
+    //
+    //
+    //     });
+    // }
+    //
+    // deleteItem(id: string): Promise<boolean>{
+    //     return new Promise((resolve, reject) => {
+    //
+    //         pool.getConnection((err, connection) => {
+    //
+    //             if (err){
+    //                 reject(err);
+    //             }else{
+    //
+    //                 const itemDAO = <ItemDAO> getDAO(DAOTypes.ITEM, connection);
+    //
+    //                 const promise = itemDAO.delete(id);
+    //                 promise.then(result => {
+    //                     resolve(result);
+    //                     pool.releaseConnection(connection);
+    //                 }).catch(error=>{
+    //                     reject(error);
+    //                     pool.releaseConnection(connection);
+    //                 });
+    //
+    //             }
+    //
+    //         });
+    //
+    //
+    //     });
+    // }
     ItemBO.prototype.countItem = function () {
         return new Promise(function (resolve, reject) {
             db_pool_1.pool.getConnection(function (err, connect) {
