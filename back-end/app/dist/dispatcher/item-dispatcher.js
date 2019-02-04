@@ -44,39 +44,44 @@ itemDispatcher.route("/:code")
     }).catch(function (error) {
         res.status(500).send(error);
     });
-})
-    .delete(function (req, res) {
-    var promise = new item_bo_1.ItemBO().deleteItem(req.params.code);
-    promise.then(function (status) {
-        if (status) {
-            res.status(200).send(true);
-        }
-        else {
-            res.sendStatus(404);
-        }
-    }).catch(function (error) {
-        res.status(500).send(error);
-    });
-})
-    .put(function (req, res) {
-    if (!("code" in req.body && "description" in req.body && "unitPrice" in req.body, "qtyOnHand" in req.body)) {
-        res.status(400).send("Invalid Request Body");
-        return;
-    }
-    if (req.body.code !== req.params.code) {
-        res.status(400).send("Mismatched Item code");
-        return;
-    }
-    var promise = new item_bo_1.ItemBO().updateItem(req.body);
-    promise.then(function (status) {
-        if (status) {
-            res.status(200).send(true);
-        }
-        else {
-            res.sendStatus(404);
-        }
-    }).catch(function (error) {
-        res.status(500).send(error);
-    });
 });
+// .delete((req, res) => {
+//     const promise = new ItemBO().deleteItem(req.params.code);
+//     promise.then(status=>{
+//
+//         if (status){
+//             res.status(200).send(true);
+//         }else{
+//             res.sendStatus(404);
+//         }
+//
+//     }).catch(error=>{
+//         res.status(500).send(error);
+//     });
+// })
+// .put((req, res) => {
+//     if (!("code" in req.body && "description" in req.body && "unitPrice" in req.body,"qtyOnHand" in req.body)){
+//         res.status(400).send("Invalid Request Body");
+//         return;
+//     }
+//
+//     if (req.body.code !== req.params.code){
+//         res.status(400).send("Mismatched Item code");
+//         return;
+//     }
+//
+//     const promise = new ItemBO().updateItem(req.body);
+//     promise.then(status=>{
+//
+//         if (status){
+//             res.status(200).send(true);
+//         }else{
+//             res.sendStatus(404);
+//         }
+//
+//     }).catch(error=>{
+//         res.status(500).send(error);
+//     });
+//
+// });
 exports.default = itemDispatcher;

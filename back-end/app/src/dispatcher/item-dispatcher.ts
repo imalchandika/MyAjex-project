@@ -56,44 +56,44 @@ itemDispatcher.route("/:code")
             res.status(500).send(error);
         });
     })
-    .delete((req, res) => {
-        const promise = new ItemBO().deleteItem(req.params.code);
-        promise.then(status=>{
-
-            if (status){
-                res.status(200).send(true);
-            }else{
-                res.sendStatus(404);
-            }
-
-        }).catch(error=>{
-            res.status(500).send(error);
-        });
-    })
-    .put((req, res) => {
-        if (!("code" in req.body && "description" in req.body && "unitPrice" in req.body,"qtyOnHand" in req.body)){
-            res.status(400).send("Invalid Request Body");
-            return;
-        }
-
-        if (req.body.code !== req.params.code){
-            res.status(400).send("Mismatched Item code");
-            return;
-        }
-
-        const promise = new ItemBO().updateItem(req.body);
-        promise.then(status=>{
-
-            if (status){
-                res.status(200).send(true);
-            }else{
-                res.sendStatus(404);
-            }
-
-        }).catch(error=>{
-            res.status(500).send(error);
-        });
-
-    });
+    // .delete((req, res) => {
+    //     const promise = new ItemBO().deleteItem(req.params.code);
+    //     promise.then(status=>{
+    //
+    //         if (status){
+    //             res.status(200).send(true);
+    //         }else{
+    //             res.sendStatus(404);
+    //         }
+    //
+    //     }).catch(error=>{
+    //         res.status(500).send(error);
+    //     });
+    // })
+    // .put((req, res) => {
+    //     if (!("code" in req.body && "description" in req.body && "unitPrice" in req.body,"qtyOnHand" in req.body)){
+    //         res.status(400).send("Invalid Request Body");
+    //         return;
+    //     }
+    //
+    //     if (req.body.code !== req.params.code){
+    //         res.status(400).send("Mismatched Item code");
+    //         return;
+    //     }
+    //
+    //     const promise = new ItemBO().updateItem(req.body);
+    //     promise.then(status=>{
+    //
+    //         if (status){
+    //             res.status(200).send(true);
+    //         }else{
+    //             res.sendStatus(404);
+    //         }
+    //
+    //     }).catch(error=>{
+    //         res.status(500).send(error);
+    //     });
+    //
+    // });
 
 export default itemDispatcher;
